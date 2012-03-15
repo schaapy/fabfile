@@ -7,21 +7,21 @@ CONFIG = {}
 
 # Configure your deployment targets here
 
-CONFIG['staging'] = {
-    'ssh_user':           'canvas',
-    'domain':             'supertesthost.com',
-    'deploy_to':          '/home/canvas/staging.fabtest.com',
-    'repository':         'git://github.com/ess/fabtest.git',
-    'branch':             'develop',
-    'post_deploy_script': 'script/build',
-    'post_setup_script':  'script/build'
-    }
+#CONFIG['staging'] = {
+    #'ssh_user':           'static',
+    #'domain':             'supertesthost.com',
+    #'deploy_to':          '/home/example/staging.fabtest.com',
+    #'repository':         'git@supersourcecontrolteamgo.com:example.git',
+    #'branch':             'staging',
+    #'post_deploy_script': 'script/build',
+    #'post_setup_script':  'script/build'
+    #}
 
 #CONFIG['production'] = {
-    #'ssh_user':           'canvas',
+    #'ssh_user':           'static',
     #'domain':             'supertesthost.com',
-    #'deploy_to':          '/home/canvas/fabtest.com',
-    #'repository':         'git://github.com/ess/fabtest.git',
+    #'deploy_to':          '/home/static/fabtest.com',
+    #'repository':         'git@supersourcecontrolteamgo.com:example.git',
     #'branch':             'master',
     #'post_deploy_script': 'script/build',
     #'post_setup_script':  'script/build'
