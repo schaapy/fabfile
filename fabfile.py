@@ -1,3 +1,5 @@
+# This is version 0.0.0 of the fabfile
+
 from __future__ import with_statement
 from fabric.api import *
 from fabric.contrib.console import confirm
