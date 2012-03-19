@@ -1,4 +1,4 @@
-# This is version 0.0.0 of the fabfile
+# This is version 0.0.1 of the fabfile
 
 from __future__ import with_statement
 from fabric.api import *
