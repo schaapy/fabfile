@@ -48,3 +48,8 @@ word). To really deploy (that is, update from the git repo and run the post
 deploy script), deploy the target like so:
 
     fab target:STAGING deploy
+
+# Release History #
+
+* 0.0.1 - Cleaned up example targets, cleaned up some code, added README
+* 0.0.0 - Initial release
