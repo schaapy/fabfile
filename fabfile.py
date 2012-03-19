@@ -12,7 +12,7 @@ CONFIG = {}
 #CONFIG['staging'] = {
     #'ssh_user':           'static',
     #'domain':             'supertesthost.com',
-    #'deploy_to':          '/home/example/staging.fabtest.com',
+    #'deploy_to':          '/home/example/staging.example.com',
     #'repository':         'git@supersourcecontrolteamgo.com:example.git',
     #'branch':             'staging',
     #'post_deploy_script': 'script/build',
@@ -22,7 +22,7 @@ CONFIG = {}
 #CONFIG['production'] = {
     #'ssh_user':           'static',
     #'domain':             'supertesthost.com',
-    #'deploy_to':          '/home/static/fabtest.com',
+    #'deploy_to':          '/home/static/example.com',
     #'repository':         'git@supersourcecontrolteamgo.com:example.git',
     #'branch':             'master',
     #'post_deploy_script': 'script/build',
@@ -59,8 +59,7 @@ def setup():
   _check_config()
   _check_deploy_target()
   deploy_to = CONFIG[DEPLOY_TARGET]['deploy_to']
-  base_dir = deploy_to.rpartition('/')[0]
-  code_dir = deploy_to.rpartition('/')[2]
+  base_dir, code_dir = deploy_to.rsplit('/', 1)
   if exists(deploy_to):
     abort("Path '%s' already exists.\nUse the deploy task instead" % deploy_to)
   else:
@@ -76,9 +75,9 @@ def deploy():
   _check_deploy_target()
   deploy_to = CONFIG[DEPLOY_TARGET]['deploy_to']
 
-  with settings(warn_only = True):
-    if run("test -d %s" % deploy_to).failed:
-      abort("Path '%s' doesn't exist.\nYou need to run the setup task first", deploy_to)
+  if not exists(deploy_to):
+    abort("Path '%s' doesn't exist.\nYou need to run the setup task first" % deploy_to)
+
   with cd(deploy_to):
     run("git stash")
     run("git fetch origin")
