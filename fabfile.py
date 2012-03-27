@@ -4,7 +4,10 @@ import os
 
 from __future__ import with_statement
 
-from fabric.api import *
+from fabric.api import abort
+from fabric.api import cd
+from fabric.api import env
+from fabric.api import run
 from fabric.contrib.console import confirm
 from fabric.contrib.files import exists
 
