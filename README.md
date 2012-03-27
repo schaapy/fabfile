@@ -29,7 +29,7 @@ target, generally, is defined as a dictionary:
   'post_setup_script': 'a script relative to deploy_to to run after setup'
 }</pre>
 
-At current, all of the configuration flags are required. For the case of the
+Currently, all of the configuration flags are required. For the case of the
 post scripts, set them to empty strings ('') if you do not wish to run a script.
 
 # Usage #
@@ -37,11 +37,11 @@ post scripts, set them to empty strings ('') if you do not wish to run a script.
 Now that you have your targets set up, you can start using the fabfile. So as
 to conform to the whiskey disk user interface, the first thing that you'll need
 to do is to set up your target. For example, if you have a "STAGING" target,
-the setup looks like this (run from the directoy that contains your fabfile):
+the setup looks like this (run from the directory that contains your fabfile):
 
     fab target:STAGING setup
 
-This command does an initial clone of the repo into the "deploy to" path on the
+This command does an initial clone of the repo into the "deploy_to" path on the
 remote server, then it runs the post setup script. Technically, your app or site
 is now deployed, depending on your definition of deployedness (which is now a
 word). To really deploy (that is, update from the git repo and run the post
