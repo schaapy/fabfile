@@ -1,6 +1,9 @@
 # This is version 0.0.1 of the fabfile
 
+import os
+
 from __future__ import with_statement
+
 from fabric.api import *
 from fabric.contrib.console import confirm
 from fabric.contrib.files import exists
@@ -59,7 +62,7 @@ def setup():
     _check_config()
     _check_deploy_target()
     deploy_to = CONFIG[DEPLOY_TARGET]['deploy_to']
-    base_dir, code_dir = deploy_to.rsplit('/', 1)
+    base_dir, code_dir = os.path.split(deploy_to)
     if exists(deploy_to):
         abort("Path '%s' already exists.\nUse the deploy task instead" % deploy_to)
     else:
