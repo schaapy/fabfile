@@ -1,13 +1,9 @@
 # This is version 0.0.1 of the fabfile
 
 import os
-
 from __future__ import with_statement
 
-from fabric.api import abort
-from fabric.api import cd
-from fabric.api import env
-from fabric.api import run
+from fabric.api import abort, cd, env, run
 from fabric.contrib.console import confirm
 from fabric.contrib.files import exists
 
@@ -37,7 +33,7 @@ CONFIG = {}
 
 # And don't touch anything below here
 
-DEPLOY_TARGET=None
+DEPLOY_TARGET=""
 
 def _check_config():
     if len(CONFIG.keys()) == 0:
@@ -47,10 +43,10 @@ def _ensure_config(target):
     if not target in CONFIG.keys():
       abort("There is no deployment target named '%s'" % target)
 
-def target(target=None):
+def target(target):
     _check_config()
     global DEPLOY_TARGET
-    if target == None:
+    if not target:
         abort("You must tell me which deployment target to use")
     _ensure_config(target)
     DEPLOY_TARGET=target
@@ -58,7 +54,7 @@ def target(target=None):
     env.user = CONFIG[DEPLOY_TARGET]['ssh_user']
 
 def _check_deploy_target():
-    if DEPLOY_TARGET == None:
+    if not DEPLOY_TARGET:
       abort("Specify a deployment target with the target task")
 
 def setup():
